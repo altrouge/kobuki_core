@@ -132,6 +132,19 @@ Command Command::SetExternalPower(const DigitalOutput &digital_output, Command::
   return outgoing;
 }
 
+Command Command::PlaySound(const unsigned char &duration, const double &frequency, Command::Data &current_data)
+{
+  // follow specifications: https://yujinrobot.github.io/kobuki/enAppendixProtocolSpecification.html
+  double a = 0.00000275;
+  uint16_t 1_over_fa = static_cast<uint16_t>(1.0/(frequency*a));
+
+  Command outgoing;
+  outgoing.data.note = 1_over_fa;
+  outgoing.data.duration = duration;
+  outgoing.data.command = Command::Sound;
+  return outgoing;
+}
+
 Command Command::PlaySoundSequence(const enum SoundSequences &number, Command::Data &current_data)
 {
   uint16_t value; // gp_out is 16 bits
