@@ -136,10 +136,10 @@ Command Command::PlaySound(const unsigned char &duration, const double &frequenc
 {
   // follow specifications: https://yujinrobot.github.io/kobuki/enAppendixProtocolSpecification.html
   double a = 0.00000275;
-  uint16_t 1_over_fa = static_cast<uint16_t>(1.0/(frequency*a));
+  uint16_t one_over_fa = static_cast<uint16_t>(1.0/(frequency*a));
 
   Command outgoing;
-  outgoing.data.note = 1_over_fa;
+  outgoing.data.note = one_over_fa;
   outgoing.data.duration = duration;
   outgoing.data.command = Command::Sound;
   return outgoing;

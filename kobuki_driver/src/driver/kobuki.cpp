@@ -478,8 +478,7 @@ void Kobuki::setExternalPower(const DigitalOutput &digital_output) {
   sendCommand(Command::SetExternalPower(digital_output, kobuki_command.data));
 }
 
-void Kobuki::playSound(const unsigned char &duration, const double &frequency);
-{
+void Kobuki::playSound(const unsigned char &duration, const double &frequency) {
   sendCommand(Command::PlaySound(duration, frequency, kobuki_command.data));
 }
 
